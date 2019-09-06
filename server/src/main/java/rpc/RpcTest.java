@@ -23,7 +23,7 @@ public class RpcTest {
 
         RpcImporter<EchoService> proxyImporter = new RpcImporter<>();
         EchoService echoService = proxyImporter.importer(EchoServiceImpl.class, new InetSocketAddress("localhost", 7890));
-        System.out.println(echoService.echo("rpc exe->"));
+        System.out.println(echoService.echo("召唤神奇宝贝"));
     }
 
 }

@@ -54,7 +54,9 @@ public class RpcExporter {
                         socketChannel.configureBlocking(false);
                         socketChannel.register(selector, SelectionKey.OP_READ);
 
-                        System.out.println("Connected: " + socketChannel.socket().getRemoteSocketAddress());
+                        logger.info("服务器启动成功");
+                        logger.info(hostName+":"+port);
+
                     } else if (selectionKey.isReadable()) {
 
                         SocketChannel socketChannel = (SocketChannel) selectionKey.channel();
@@ -82,6 +84,7 @@ public class RpcExporter {
         @Override
         public void run() {
             try {
+
                 ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
                 String modelStr = "";
 
@@ -89,8 +92,8 @@ public class RpcExporter {
                     byteBuffer.flip();
                     modelStr += Charset.forName("UTF-8").decode(byteBuffer);
                 }
-
-                System.out.println("exe:->modelStr");
+                logger.info("收到一次请求调用，调用方法详情：");
+                logger.info(modelStr);
 
 
                 Model model = JSON.parseObject(modelStr, Model.class);

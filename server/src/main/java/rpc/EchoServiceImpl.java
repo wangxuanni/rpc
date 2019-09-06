@@ -9,6 +9,6 @@ package rpc;
 public class EchoServiceImpl  implements EchoService {
     @Override
     public String echo(String ping) {
-        return ping != null ? ping+"exe success" : "exe fail";
+        return ping != null ? ping+"-->神奇宝贝闪亮登场" : "召唤失败";
     }
 }

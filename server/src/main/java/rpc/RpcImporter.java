@@ -23,7 +23,6 @@ public class RpcImporter<S> {
     /**
      * 通过jdk动态代理，传入类加载器、类、代理类（匿名实现）。返回一个代理实例
      * 目的是把本地接口转换成JDK代理对象
-     *
      * @param serviceClass
      * @param addr
      * @return
@@ -59,36 +58,7 @@ public class RpcImporter<S> {
                         }
 
                     }
-                       /* Socket socket = null;
-                        ObjectOutputStream output = null;
-                        ObjectInputStream input = null;
-                        try {
-                            //socket连接端口
-                            socket = new Socket();
-                            socket.connect(addr);
 
-                           *//*
-                           把类名、方法名、方法参数传过去
-                           *//*
-                            output = new ObjectOutputStream(socket.getOutputStream());
-
-                            Model model = new Model(serviceClass.getName(), method.getName(), method.getParameterTypes(), args);
-                            String modelStr = JSONObject.toJSONString(model);
-                            output.writeObject(modelStr);
-
-                            //获取答应
-                            input = new ObjectInputStream(socket.getInputStream());
-                            //答应之后返回
-                            return input.readObject();
-                        } finally {
-                            if (socket != null)
-                                socket.close();
-                            if (output != null)
-                                output.close();
-                            if (input != null)
-                                input.close();
-                        }
-                    }*/
                 });
     }
 
